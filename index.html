@@ -1,40 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Booktrawler Discovery | Curated Reading Guides</title>
-  <meta name="description" content="Expert-curated reading guides across nonfiction, fiction, kids, young adult, and themed reading journeys.">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nothing to see here</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #030014;
+            --color-pink: #ff007a;
+            --color-purple: #7928ca;
+            --color-cyan: #00d4ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Ambient Glowing Blobs */
+        .blob {
+            position: absolute;
+            filter: blur(90px);
+            z-index: 0;
+            opacity: 0.6;
+            animation: float-blob 12s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--color-pink);
+            border-radius: 50%;
+        }
+
+        .blob-2 {
+            bottom: -20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: var(--color-purple);
+            border-radius: 50%;
+            animation-delay: -3s;
+        }
+
+        .blob-3 {
+            top: 30%;
+            left: 30%;
+            width: 40vw;
+            height: 40vw;
+            background: var(--color-cyan);
+            border-radius: 50%;
+            animation-delay: -6s;
+            opacity: 0.4;
+        }
+
+        @keyframes float-blob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5vw, -5vh) scale(1.1); }
+            100% { transform: translate(-5vw, 5vh) scale(0.9); }
+        }
+
+        /* Canvas Overlay */
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Main Content Container */
+        .container {
+            position: relative;
+            z-index: 2;
+            perspective: 1500px; /* Gives depth for 3D tilt */
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            width: 100%;
+        }
+
+        /* Animated Shimmering Typography */
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            transform: translateZ(40px); /* Pops text out in 3D */
+            
+            /* Gradient text effect */
+            background: linear-gradient(
+                to right,
+                #ffffff 10%,
+                var(--color-cyan) 30%,
+                var(--color-pink) 70%,
+                #ffffff 90%
+            );
+            background-size: 200% auto;
+            color: #000;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShine 5s linear infinite;
+        }
+
+        @keyframes textShine {
+            to { background-position: 200% center; }
+        }
+
+        p {
+            color: #b0b0c0;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 2.5rem;
+            min-height: 2rem;
+            transform: translateZ(20px);
+        }
+
+        /* Fancy Interactive Button */
+        .action-btn {
+            background: transparent;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 16px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(30px);
+            z-index: 10;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, var(--color-pink), var(--color-purple), var(--color-cyan));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .action-btn:hover {
+            border-color: transparent;
+            transform: translateZ(30px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 0, 122, 0.4);
+        }
+
+        .action-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Media Queries for Small Devices */
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<header class="site-header"><div class="wrap"><a class="brand" href="./">Booktrawler Discovery</a><nav><a href="nonfiction/">Nonfiction</a><a href="fiction/">Fiction</a><a href="kids/">Kids</a><a href="ya/">Young Adult</a><a href="journeys/">Reading Journeys</a></nav></div></header>
-  <main class="page">
-    <h1>Booktrawler Discovery</h1>
-    <p class="lead">Curated, opinionated reading guides for curious readers &mdash; find the right book for the moment, across every section.</p>
-    <section class="hub-cards">
-      <a class="hub-card" href="nonfiction/">
-        <h2>Nonfiction</h2>
-        <p>69 curated collections &rarr;</p>
-      </a>
-      <a class="hub-card" href="fiction/">
-        <h2>Fiction</h2>
-        <p>67 curated collections &rarr;</p>
-      </a>
-      <a class="hub-card" href="kids/">
-        <h2>Kids</h2>
-        <p>50 curated collections &rarr;</p>
-      </a>
-      <a class="hub-card" href="ya/">
-        <h2>Young Adult</h2>
-        <p>50 curated collections &rarr;</p>
-      </a>
-      <a class="hub-card" href="journeys/">
-        <h2>Reading Journeys</h2>
-        <p>150 curated collections &rarr;</p>
-      </a>
-    </section>
-  </main>
-<footer class="site-footer"><div class="wrap"><nav><a href="nonfiction/">Nonfiction</a><a href="fiction/">Fiction</a><a href="kids/">Kids</a><a href="ya/">Young Adult</a><a href="journeys/">Reading Journeys</a></nav><p>Booktrawler is reader-supported. When you buy through our Bookshop.org links, we may earn a commission at no extra cost to you.</p><p>&copy; Booktrawler. Curated reading guides for curious readers.</p></div></footer>
+
+    <!-- Animated background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Interactive particle system -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Glassmorphism content -->
+    <div class="container" id="tilt-container">
+        <div class="glass-card" id="tilt-card">
+            <h1 id="main-title">Nothing to<br>see here</h1>
+            <p id="typewriter"></p>
+            <button class="action-btn" id="actionBtn" onclick="igniteVoid()">Or is there?</button>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================
+           1. Typewriter Effect
+        ========================================= */
+        const textToType = "Move along, traveler. The void is empty.";
+        const typeTarget = document.getElementById('typewriter');
+        let typeIndex = 0;
+
+        function typeWriter() {
+            if (typeIndex < textToType.length) {
+                typeTarget.innerHTML += textToType.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        window.onload = () => {
+            setTimeout(typeWriter, 500);
+            initParticles();
+            animateParticles();
+        };
+
+        /* =========================================
+           2. 3D Tilt Effect on Glass Card
+        ========================================= */
+        const container = document.getElementById('tilt-container');
+        const card = document.getElementById('tilt-card');
+
+        // Desktop Mouse Move
+        container.addEventListener('mousemove', (e) => {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Mobile Touch Move
+        container.addEventListener('touchmove', (e) => {
+            let touch = e.touches[0];
+            let xAxis = (window.innerWidth / 2 - touch.clientX) / 25;
+            let yAxis = (window.innerHeight / 2 - touch.clientY) / 25;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Reset positions
+        const resetTilt = () => {
+            card.style.transition = "transform 0.5s ease";
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+            setTimeout(() => { card.style.transition = "transform 0.1s ease-out"; }, 500);
+        };
+        
+        container.addEventListener('mouseleave', resetTilt);
+        container.addEventListener('touchend', resetTilt);
+
+
+        /* =========================================
+           3. Interactive Particle System
+        ========================================= */
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 120
+        };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            mouse.x = e.touches[0].clientX;
+            mouse.y = e.touches[0].clientY;
+        });
+
+        const resetMouse = () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        };
+
+        window.addEventListener('mouseout', resetMouse);
+        window.addEventListener('touchend', resetMouse);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        });
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+                this.baseSize = size;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            update() {
+                // Bounce off edges
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+
+                // Mouse interactivity (Repel effect)
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < mouse.radius) {
+                    const forceDirectionX = dx / distance;
+                    const forceDirectionY = dy / distance;
+                    const force = (mouse.radius - distance) / mouse.radius;
+                    const moveX = forceDirectionX * force * 5;
+                    const moveY = forceDirectionY * force * 5;
+                    
+                    this.x -= moveX;
+                    this.y -= moveY;
+                }
+
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 7000;
+            const colors = ['#ffffff', '#00d4ff', '#ff007a', '#7928ca'];
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 0.5;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 1) - 0.5;
+                let directionY = (Math.random() * 1) - 0.5;
+                let color = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function animateParticles() {
+            requestAnimationFrame(animateParticles);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+        }
+
+        /* =========================================
+           4. Button Explosion Interaction
+        ========================================= */
+        function igniteVoid() {
+            // Explode particles outward
+            particlesArray.forEach(p => {
+                p.directionX = (Math.random() - 0.5) * 60;
+                p.directionY = (Math.random() - 0.5) * 60;
+            });
+
+            // Update Text
+            document.getElementById('main-title').innerHTML = "Welcome to<br>the universe";
+            
+            // Retype paragraph
+            typeTarget.innerHTML = "";
+            textToType2 = "Suddenly, the void wasn't so empty anymore...";
+            typeIndex = 0;
+            
+            function retype() {
+                if (typeIndex < textToType2.length) {
+                    typeTarget.innerHTML += textToType2.charAt(typeIndex);
+                    typeIndex++;
+                    setTimeout(retype, 40);
+                }
+            }
+            retype();
+
+            // Shift background blob colors to vibrant
+            document.querySelector('.blob-1').style.background = '#00d4ff';
+            document.querySelector('.blob-2').style.background = '#ff007a';
+            document.querySelector('.blob-3').style.background = '#ffd700'; // Gold
+
+            // Fade out the button beautifully
+            const btn = document.getElementById('actionBtn');
+            btn.style.opacity = '0';
+            btn.style.transform = 'translateZ(30px) scale(0.8)';
+            setTimeout(() => { btn.style.display = 'none'; }, 400);
+        }
+    </script>
 </body>
 </html>
