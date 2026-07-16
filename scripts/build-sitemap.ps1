@@ -8,7 +8,7 @@ $sitemap = Join-Path $base 'sitemap.xml'
 $siteUrl = 'https://tomrhodes.me/'
 
 # Walk the whole repo for HTML pages, excluding non-public paths.
-$excludeDirs = @('new-site', '.git', '.kilo')
+$excludeDirs = @('new-site', '.git', '.kilo', 'templates')
 $files = Get-ChildItem -LiteralPath $base -Recurse -Filter *.html |
     Where-Object {
         $rel = $_.FullName.Replace("$base\", "").Replace('\', '/')
