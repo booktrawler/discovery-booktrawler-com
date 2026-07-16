@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blog — tom/rhodes</title>
+    <meta name="description" content="Reflections on grief, faith, rest, and spiritual formation from The Saint Effect and The Gentle Uprising.">
+    <meta name="author" content="Darryl Purdie">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tomrhodes.me/blog/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog — tom/rhodes">
+    <meta property="og:description" content="Reflections on grief, faith, rest, and spiritual formation from The Saint Effect and The Gentle Uprising, plus film essays and life meditations.">
+    <meta property="og:url" content="https://tomrhodes.me/blog/">
+    <meta property="og:site_name" content="tom/rhodes">
+    <meta property="og:image" content="https://tomrhodes.me/images/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog — tom/rhodes">
+    <meta name="twitter:description" content="Reflections on grief, faith, rest, and spiritual formation from The Saint Effect and The Gentle Uprising.">
+    <meta name="twitter:image" content="https://tomrhodes.me/images/logo.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "tom/rhodes Blog",
+        "description": "Reflections on grief, faith, rest, and spiritual formation.",
+        "url": "https://tomrhodes.me/blog/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "tom/rhodes",
+            "url": "https://tomrhodes.me/"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #2c2c2c;
+            background: #faf8f5;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        nav .logo { display: flex; align-items: center; }
+        nav .logo img { height: 40px; width: auto; }
+        nav .nav-links { display: flex; gap: 2rem; }
+        nav .nav-links a {
+            color: #d4d0c8;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav .nav-links a:hover { color: #c8a96e; }
+
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
+            color: #faf8f5;
+        }
+        .page-header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #faf8f5;
+            font-weight: 300;
+        }
+        .page-header h1 em {
+            font-style: italic;
+            color: #c8a96e;
+            font-weight: 400;
+        }
+        .page-header p {
+            max-width: 550px;
+            margin: 1rem auto 0;
+            color: #a0a0b0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+        }
+
+        /* ========== BLOG SECTIONS ========== */
+        .blog-sections {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+        .section-header:first-child { padding-top: 0; }
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .section-label.novel { color: #c8a96e; }
+        .section-label.nonfiction { color: #6b8a6b; }
+        .section-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: #1a1a2e;
+        }
+        .section-header p {
+            color: #8b8b9b;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+        .divider {
+            width: 40px;
+            height: 2px;
+            margin: 1rem auto 0;
+            border: none;
+        }
+        .divider.gold { background: #c8a96e; }
+        .divider.green { background: #6b8a6b; }
+
+        /* ========== POST CARDS ========== */
+        .post-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .post-card {
+            display: block;
+            padding: 1.8rem 2rem;
+            background: #fff;
+            border: 1px solid #e8e4de;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: inherit;
+        }
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            text-decoration: none;
+        }
+        .post-card.novel { border-left: 3px solid #c8a96e; }
+        .post-card.nonfiction { border-left: 3px solid #6b8a6b; }
+        .post-card-date {
+            font-size: 0.75rem;
+            color: #8b8b9b;
+            margin-bottom: 0.4rem;
+        }
+        .post-card h3 {
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            margin-bottom: 0.4rem;
+        }
+        .post-card p {
+            font-size: 0.9rem;
+            color: #5a5a6a;
+            line-height: 1.6;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            padding: 3rem 2rem;
+            background: #12121f;
+            text-align: center;
+            color: #555568;
+            font-size: 0.8rem;
+        }
+        footer p { margin-bottom: 0.3rem; }
+
+        /* ========== AMAZON BANNER ========== */
+        .amazon-banner {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid #c8a96e;
+        }
+        .amazon-banner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: #faf8f5;
+            font-weight: 300;
+            margin-bottom: 0.3rem;
+        }
+        .amazon-banner h2 em {
+            font-style: italic;
+            color: #c8a96e;
+        }
+        .amazon-banner p {
+            color: #a0a0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .amazon-banner-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .amazon-btn {
+            display: inline-block;
+            padding: 0.7rem 1.8rem;
+            background: #c8a96e;
+            color: #1a1a2e;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
+        }
+        .amazon-btn:hover {
+            background: #dbbe82;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        .amazon-btn.outline {
+            background: transparent;
+            color: #c8a96e;
+            border: 1px solid #c8a96e;
+        }
+        .amazon-btn.outline:hover {
+            background: rgba(200, 169, 110, 0.1);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            nav .nav-links { gap: 1rem; }
+            nav .nav-links a { font-size: 0.7rem; }
+            .blog-sections { padding: 3rem 1.5rem 4rem; }
+        }
+        @media (max-width: 480px) {
+            nav .nav-links { display: none; }
+            .page-header { padding: 8rem 1.5rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="../" class="logo">
+            <img src="../images/logo.png" alt="tom/rhodes">
+        </a>
+        <div class="nav-links">
+            <a href="../">Home</a>
+            <a href="../#books">Books</a>
+            <a href="../#about">About</a>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <h1>Book<em>trawler</em> Blog</h1>
+        <p>Reflections on grief, faith, rest, and the slow work of grace.</p>
+    </header>
+
+    <!-- AMAZON CTA BANNER -->
+    <section class="amazon-banner">
+        <h2>Buy <em>The Books</em></h2>
+        <p>Both available now on Amazon.</p>
+        <div class="amazon-banner-buttons">
+            <a href="https://www.amazon.com/dp/B0H4NGYG23?tag=booktrawlercom-20" target="_blank" class="amazon-btn">The Saint Effect — Amazon</a>
+            <a href="https://www.amazon.com/dp/B0H4MHM4NG?tag=booktrawlercom-20" target="_blank" class="amazon-btn outline">The Gentle Uprising — Amazon</a>
+        </div>
+    </section>
+
+    <!-- BLOG POSTS -->
+    <main class="blog-sections">
+
+        <!-- The Saint Effect -->
+        <section>
+            <div class="section-header">
+                <div class="section-label novel">Novel</div>
+                <h2>The Saint Effect</h2>
+                <p>Stories of grief, grace, and the people who show up.</p>
+                <hr class="divider gold">
+            </div>
+            <div class="post-grid">
+                <a href="saint-effect/what-makes-a-saint-redefining-holiness.html" class="post-card novel">
+                    <div class="post-card-date">June 20, 2026</div>
+                    <h3>What Makes a Saint: Redefining Holiness</h3>
+                    <p>Saints are not perfect people. They are people who keep showing up, who keep loving, who keep choosing God in the midst of ordinary, difficult, beautiful lives.</p>
+                </a>
+                <a href="saint-effect/love-without-guarantees-risking-connection.html" class="post-card novel">
+                    <div class="post-card-date">June 19, 2026</div>
+                    <h3>Love Without Guarantees: Risking Connection</h3>
+                    <p>Every meaningful relationship requires risk. Love without guarantees is terrifying — but it is also where we discover whether we are willing to trust at all.</p>
+                </a>
+                <a href="saint-effect/the-miracle-of-showing-up-broken.html" class="post-card novel">
+                    <div class="post-card-date">June 18, 2026</div>
+                    <h3>The Miracle of Showing Up Broken</h3>
+                    <p>We prepare ourselves before we show up. But God meets us most powerfully not when we are prepared, but when we are broken.</p>
+                </a>
+                <a href="saint-effect/healing-isnt-linear-griefs-uneven-path.html" class="post-card novel">
+                    <div class="post-card-date">June 17, 2026</div>
+                    <h3>Healing Isn't Linear: Grief's Uneven Path</h3>
+                    <p>We want healing to be a staircase — steady, measurable, forward. But grief is a spiral. Understanding the non-linear nature of healing can free us from false expectations.</p>
+                </a>
+                <a href="saint-effect/found-family-the-people-who-choose-you.html" class="post-card novel">
+                    <div class="post-card-date">June 16, 2026</div>
+                    <h3>Found Family: The People Who Choose You</h3>
+                    <p>Not all family is blood. Found family — the people who show up, who stay, who choose you again and again — represents one of the most profound expressions of God's grace.</p>
+                </a>
+                <a href="saint-effect/pastors-crisis-when-leaders-lose-faith.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Pastor's Crisis: When Leaders Lose Faith</h3>
+                    <p>Pastors are expected to have unshakable faith. But what happens when the shepherd is the one who is lost? A candid exploration of pastoral crisis and hidden doubt.</p>
+                </a>
+                <a href="saint-effect/small-town-grace-unexpected-community.html" class="post-card novel">
+                    <div class="post-card-date">June 14, 2026</div>
+                    <h3>Small Town Grace: Unexpected Community</h3>
+                    <p>We leave small towns searching for something bigger. But sometimes grace arrives precisely where we are, in the form of neighbours who become family.</p>
+                </a>
+                <a href="saint-effect/the-weight-of-a-donor-heart-stories.html" class="post-card novel">
+                    <div class="post-card-date">June 13, 2026</div>
+                    <h3>The Weight of a Donor Heart: Stories</h3>
+                    <p>Behind every organ transplant is a donor family making the most difficult decision of their lives. Stories of grief, generosity, and the weight of a donor heart that keeps beating.</p>
+                </a>
+                <a href="saint-effect/faith-and-doubt-why-honesty-changes-everything.html" class="post-card novel">
+                    <div class="post-card-date">June 12, 2026</div>
+                    <h3>Faith and Doubt: Why Honesty Changes Everything</h3>
+                    <p>Doubt is not the opposite of faith — dishonesty is. When we stop pretending and start being real about our questions, something remarkable happens to our spiritual lives.</p>
+                </a>
+                <a href="saint-effect/grief-after-thirteen-months-moving-on.html" class="post-card novel">
+                    <div class="post-card-date">June 11, 2026</div>
+                    <h3>Grief After Thirteen Months: Moving On</h3>
+                    <p>Thirteen months after loss, the world expects you to be over it. But grief does not follow calendars. An honest account of what moving forward really means after profound loss.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- The Gentle Uprising -->
+        <section>
+            <div class="section-header">
+                <div class="section-label nonfiction">Non-Fiction</div>
+                <h2>The Gentle Uprising</h2>
+                <p>Practices for rest, resilience, and spiritual formation.</p>
+                <hr class="divider green">
+            </div>
+            <div class="post-grid">
+                <a href="gentle-uprising/body-wisdom-listening-to-your-nervous-system.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 20, 2026</div>
+                    <h3>Body Wisdom: Listening to Your Nervous System</h3>
+                    <p>Your body speaks before your mind understands. Learning to listen to your nervous system's signals is the gateway to embodied spirituality and lasting inner peace.</p>
+                </a>
+                <a href="gentle-uprising/the-one-percent-version-small-steps-forward.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 19, 2026</div>
+                    <h3>The One Percent Version: Small Steps Forward</h3>
+                    <p>Improvement does not require leaps. Being one percent better each day compounds into profound transformation. The one percent principle makes change sustainable.</p>
+                </a>
+                <a href="gentle-uprising/your-first-thirty-days-a-gentle-reset.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 18, 2026</div>
+                    <h3>Your First Thirty Days: A Gentle Reset</h3>
+                    <p>Change does not require overhaul. A thirty-day gentle reset rooted in The Gentle Uprising principles can rewire your nervous system, your habits, and your relationship with God.</p>
+                </a>
+                <a href="gentle-uprising/rest-as-worship-reclaiming-sabbath.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 17, 2026</div>
+                    <h3>Rest as Worship: Reclaiming Sabbath</h3>
+                    <p>In a culture that equates rest with laziness, choosing stillness is a radical act of worship. Sabbath is not downtime — it is the primary way we declare God is our provider.</p>
+                </a>
+                <a href="gentle-uprising/the-architecture-of-frictionlessness.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 16, 2026</div>
+                    <h3>The Architecture of Frictionlessness</h3>
+                    <p>From one-click ordering to algorithm-curated lives, we have engineered friction out of everything — including our spiritual growth. But friction is where transformation happens.</p>
+                </a>
+                <a href="gentle-uprising/holy-lament-grief-as-spiritual-practice.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Holy Lament: Grief as Spiritual Practice</h3>
+                    <p>The Psalms contain 150 songs, and nearly a third are laments. Grief is not the opposite of faith — it is the very place where honest faith lives.</p>
+                </a>
+                <a href="gentle-uprising/the-wanting-gap-why-more-never-satisfies.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 14, 2026</div>
+                    <h3>The Wanting Gap: Why More Never Satisfies</h3>
+                    <p>Achieved the goal. Got the promotion. Bought the thing. And still feel empty. The wanting gap is the space between having and wanting — and closing it begins with understanding desire itself.</p>
+                </a>
+                <a href="gentle-uprising/sacred-ordinary-finding-god-in-the-mundane.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 13, 2026</div>
+                    <h3>Sacred Ordinary: Finding God in the Mundane</h3>
+                    <p>What if washing dishes, commuting, and folding laundry are not interruptions to your spiritual life but the very substance of it?</p>
+                </a>
+                <a href="gentle-uprising/cyclic-sighing-ancient-breath-practice-for-anxiety.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 12, 2026</div>
+                    <h3>Cyclic Sighing: An Ancient Breath Practice for Anxiety</h3>
+                    <p>Before apps, before therapy modalities, before neuroscience — there was the breath. Explore cyclic sighing, an ancient practice that rapidly calms anxiety and restores nervous system balance.</p>
+                </a>
+                <a href="gentle-uprising/the-daily-anchor-8-minutes-to-grounded-living.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 11, 2026</div>
+                    <h3>The Daily Anchor: 8 Minutes to Grounded Living</h3>
+                    <p>In a world of constant distraction, just 8 minutes of intentional stillness can anchor your entire day. Discover how the Daily Anchor practice transforms chaos into clarity.</p>
+                </a>
+                <a href="gentle-uprising/sabbath-as-resistance-in-a-247-world.html" class="post-card nonfiction">
+                    <div class="post-card-date">Undated</div>
+                    <h3>Sabbath as Resistance in a 24/7 World</h3>
+                    <p>A reflection on Sabbath as an act of resistance against the relentless pace of modern life.</p>
+                </a>
+                <a href="gentle-uprising/the-neuroscience-of-wanting-vs-liking.html" class="post-card nonfiction">
+                    <div class="post-card-date">Undated</div>
+                    <h3>The Neuroscience of Wanting vs. Liking</h3>
+                    <p>Exploring the gap between what we want and what we actually enjoy through the lens of neuroscience.</p>
+                </a>
+                <a href="gentle-uprising/dysregulated-souls-the-price-of-optimization-culture.html" class="post-card nonfiction">
+                    <div class="post-card-date">Undated</div>
+                    <h3>Dysregulated Souls: The Price of Optimization Culture</h3>
+                    <p>How the pursuit of optimal living produces hollow achievement and dysregulated souls.</p>
+                </a>
+                <a href="gentle-uprising/building-an-identity-that-isnt-your-output.html" class="post-card nonfiction">
+                    <div class="post-card-date">Undated</div>
+                    <h3>Building an Identity That Isn't Your Output</h3>
+                    <p>You are not your productivity. Building identity rooted in being rather than doing.</p>
+                </a>
+                <a href="gentle-uprising/why-friction-is-good-for-your-soul.html" class="post-card nonfiction">
+                    <div class="post-card-date">Undated</div>
+                    <h3>Why Friction Is Good for Your Soul</h3>
+                    <p>Resistance, difficulty, and friction are not obstacles to spiritual growth — they are the means.</p>
+                </a>
+                <a href="gentle-uprising/why-you-feel-empty-after-achieving-everything.html" class="post-card nonfiction">
+                    <div class="post-card-date">Undated</div>
+                    <h3>Why You Feel Empty After Achieving Everything</h3>
+                    <p>When you reach the top and find it hollow — understanding the emptiness of achievement without meaning.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Rewind & Reclaim -->
+        <section>
+            <div class="section-header">
+                <div class="section-label novel">Film Essays</div>
+                <h2>Rewind &amp; Reclaim</h2>
+                <p>Films that arrived too early, were misunderstood, or forgotten.</p>
+                <hr class="divider gold">
+            </div>
+            <div class="post-grid">
+                <a href="rewind-and-reclaim/the-lie-hollywood-told-about-willows-box-office.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Lie Hollywood Told About Willow's Box Office</h3>
+                    <p>Willow (1988) is routinely described as a box-office flop. The actual numbers tell a different story.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-finger-test-what-willow-1988-is-actually-about.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Finger Test: What Willow (1988) Is Actually About</h3>
+                    <p>The finger test scene is not a throwaway moment of fantasy wisdom. It is the film's entire thesis.</p>
+                </a>
+                <a href="rewind-and-reclaim/why-the-dark-crystal-1982-had-no-human-characters-and-why-that-was-the-point.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why The Dark Crystal (1982) Had No Human Characters</h3>
+                    <p>Jim Henson's decision was not a limitation. It was a philosophical argument about what film could ask of an audience.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-dark-crystal-1982-and-the-argument-about-wholeness.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Dark Crystal (1982) and the Argument About Wholeness</h3>
+                    <p>The Dark Crystal is not a film about good defeating evil. It is a film about a broken world being made whole.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-scott-pilgrim-box-office-story-corrected.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Scott Pilgrim Box Office Story, Corrected</h3>
+                    <p>Scott Pilgrim opened in fifth place. The more interesting story is the cast list of the film that opened fifth.</p>
+                </a>
+                <a href="rewind-and-reclaim/what-scott-pilgrim-vs-the-world-2010-is-actually-about.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>What Scott Pilgrim vs. the World (2010) Is Actually About</h3>
+                    <p>Usually described as a video game movie. It is neither. It is a film about the emotional work required to become a person worth being with.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-waterworld-flop-myth-examined.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Waterworld Flop Myth, Examined</h3>
+                    <p>Waterworld is the canonical Hollywood disaster story. But the arithmetic tells a different story.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-mariner-why-waterworld-1995-has-the-decades-most-misunderstood-hero.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Mariner: Why Waterworld Has the Decade's Most Misunderstood Hero</h3>
+                    <p>Kevin Costner's Mariner is not a conventional action hero. He is a man adapted for solitude forced into connection.</p>
+                </a>
+                <a href="rewind-and-reclaim/how-speed-racer-2008-went-from-39-to-79-on-rotten-tomatoes.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>How Speed Racer (2008) Went from 39% to 79% on Rotten Tomatoes</h3>
+                    <p>The score is now 79%. Here is what changed, and why it changed.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-thing-1982-opened-two-weeks-after-et-that-is-the-whole-story.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Thing (1982) Opened Two Weeks After E.T.</h3>
+                    <p>The Thing is the definitive summer-of-1982 wrong-emotional-season story.</p>
+                </a>
+                <a href="rewind-and-reclaim/why-the-hudsucker-proxy-1994-got-bad-reviews-and-why-those-reviews-were-wrong.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why The Hudsucker Proxy (1994) Got Bad Reviews</h3>
+                    <p>The film that loved the past too much for its own present.</p>
+                </a>
+                <a href="rewind-and-reclaim/why-children-of-men-2006-lost-money-on-christmas-day.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Children of Men (2006) Lost Money on Christmas Day</h3>
+                    <p>The film that didn't predict the future — it filmed the present.</p>
+                </a>
+                <a href="rewind-and-reclaim/galaxy-quest-1999-was-not-a-flop-here-is-what-actually-happened.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Galaxy Quest (1999) Was Not a Flop</h3>
+                    <p>Here is what actually happened with the film that made fun of something it loved completely.</p>
+                </a>
+                <a href="rewind-and-reclaim/you-know-for-kids-what-the-hudsucker-proxy-1994-is-actually-defending.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>You Know. For Kids: What The Hudsucker Proxy (1994) Is Actually Defending</h3>
+                    <p>The hula hoop is not a gag. It is the film's central argument about what corporate America cannot measure and why that matters.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-ending-of-the-thing-1982-is-not-nihilistic-here-is-what-it-is.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Ending of The Thing (1982) Is Not Nihilistic. Here Is What It Is.</h3>
+                    <p>Two men in the cold, neither certain the other is human. The ending is the film's most precise moral argument.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-camera-in-children-of-men-2006-is-an-ethical-choice-not-a-stylistic-one.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Camera in Children of Men (2006) Is an Ethical Choice, Not a Stylistic One</h3>
+                    <p>Handheld, unbroken, never cutting away — a philosophical argument about the relationship between cinema and witness.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-seventeen-year-pitch-how-treasure-planet-2002-was-made-against-disneys-wishe.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Seventeen-Year Pitch: How Treasure Planet (2002) Was Made Against Disney's Wishes</h3>
+                    <p>Ron Clements and John Musker first pitched Treasure Planet in 1985. Disney said no. They made it anyway.</p>
+                </a>
+                <a href="rewind-and-reclaim/why-brian-murrays-john-silver-is-the-best-performance-in-disney-animations-final.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Brian Murray's John Silver Is the Best Performance in Disney Animation's Final Era</h3>
+                    <p>A cyborg with a divided soul. The most emotionally complex performance in Disney animation since Beauty and the Beast.</p>
+                </a>
+                <a href="rewind-and-reclaim/the-warner-bros-decision-that-almost-erased-the-iron-giant-1999.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Warner Bros. Decision That Almost Erased The Iron Giant (1999)</h3>
+                    <p>The highest test screening scores in fifteen years. The studio made exactly one poster. The marketing failure that nearly buried a masterpiece.</p>
+                </a>
+                <a href="rewind-and-reclaim/superman-what-one-word-does-in-the-iron-giant-1999.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>"Superman": What One Word Does in The Iron Giant (1999)</h3>
+                    <p>Hogarth says one word as the Giant prepares to sacrifice himself. Understanding why it works requires everything the film built to get there.</p>
+                </a>
+                <a href="rewind-and-reclaim/by-grabthars-hammer-what-alan-rickman-built-in-galaxy-quest-1999.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>"By Grabthar's Hammer": What Alan Rickman Built in Galaxy Quest (1999)</h3>
+                    <p>Alexander Dane begins contemptuous of the line he is most famous for. He ends it believing it completely.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- The Winners Circle -->
+        <section>
+            <div class="section-header">
+                <div class="section-label novel">Minibooks</div>
+                <h2>The Winners Circle</h2>
+                <p>Ten short books on living well — insights and lead magnets.</p>
+                <hr class="divider gold">
+            </div>
+            <div class="post-grid">
+                <a href="winners-circle/why-making-things-harder-on-purpose-is-the-secret-to-a-more-meaningful-life.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Making Things Harder on Purpose Is the Secret to a More Meaningful Life</h3>
+                    <p>You've spent years optimising for ease. But there's a category of difficulty you may have removed by accident.</p>
+                </a>
+                <a href="winners-circle/youre-more-influential-than-you-think-and-the-research-proves-it.html" class="post-card novel">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>You're More Influential Than You Think — and the Research Proves It</h3>
+                    <p>How you behave when nobody is measuring is the behaviour that shapes the people around you most.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- The Long Middle -->
+        <section>
+            <div class="section-header">
+                <div class="section-label nonfiction">Second Half of Life</div>
+                <h2>The Long Middle</h2>
+                <p>Identity, purpose, and meaning in the second half of life.</p>
+                <hr class="divider green">
+            </div>
+            <div class="post-grid">
+                <a href="the-long-middle/why-youre-never-going-to-feel-ready-and-what-to-do-instead.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why You're Never Going to Feel Ready — and What to Do Instead</h3>
+                    <p>Certainty is not the prerequisite for action. It is the reward of action.</p>
+                </a>
+                <a href="the-long-middle/how-your-memory-is-lying-to-you-about-your-own-life.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>How Your Memory Is Lying to You About Your Own Life</h3>
+                    <p>The story you tell about your past is not the past. It is an edited version.</p>
+                </a>
+                <a href="the-long-middle/why-retirement-feels-so-disorienting-even-when-you-planned-for-it.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Retirement Feels So Disorienting Even When You Planned for It</h3>
+                    <p>The scaffolding was not the building. You are.</p>
+                </a>
+                <a href="the-long-middle/why-thinking-about-your-own-death-is-good-for-your-life.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Thinking About Your Own Death Is Good for Your Life</h3>
+                    <p>The people who have developed the clearest relationship with their mortality report not anxiety but clarity.</p>
+                </a>
+                <a href="the-long-middle/was-it-enough-the-question-everyone-in-their-60s-and-70s-eventually-asks.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Was It Enough? The Question Everyone in Their 60s and 70s Eventually Asks</h3>
+                    <p>It arrives not in a moment of crisis but in an ordinary one. And it is one of the most significant questions available to a human being.</p>
+                </a>
+                <a href="the-long-middle/you-know-more-than-you-think-you-do-and-someone-needs-to-hear-it.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>You Know More Than You Think You Do — And Someone Needs to Hear It</h3>
+                    <p>The more thoroughly you understand something, the harder it is to remember what it felt like not to understand it.</p>
+                </a>
+                <a href="the-long-middle/gladness-is-not-gratitude-a-distinction-that-changes-how-you-look-at-your-life.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Gladness Is Not Gratitude — A Distinction That Changes How You Look at Your Life</h3>
+                    <p>Understanding the difference between gladness, gratitude, and happiness — and why you can be glad of what was hard even when you cannot be happy about it or grateful for it.</p>
+                </a>
+                <a href="the-long-middle/the-surprising-thing-that-runs-through-your-worst-chapters-and-why-it-matters.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Surprising Thing That Runs Through Your Worst Chapters — And Why It Matters</h3>
+                    <p>The same quality present in your proudest chapters may be operating in the ones you would rather not revisit — expressed under different conditions. The Shadow Thread and the High/Low Contrast Audit.</p>
+                </a>
+                <a href="the-long-middle/why-you-cant-plan-your-way-to-a-new-identity-after-60-and-what-to-do-instead.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why You Can't Plan Your Way to a New Identity After 60 (And What to Do Instead)</h3>
+                    <p>Identity reinvention after a major role exit is not a planning problem — it is an exploration problem. The thirty-day prototype as an alternative to the blueprint approach.</p>
+                </a>
+                <a href="the-long-middle/why-intimacy-changes-after-50-and-why-that-might-be-better-than-you-think.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Intimacy Changes After 50 — And Why That Might Be Better Than You Think</h3>
+                    <p>What changes is not the capacity for intimacy but the ignition mechanism — from spontaneous to responsive desire. The Logistics Trap that catches long-term couples.</p>
+                </a>
+                <a href="the-long-middle/the-hidden-psychology-of-caregiver-burnout-and-the-one-thing-that-prevents-it.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Hidden Psychology of Caregiver Burnout — And the One Thing That Prevents It</h3>
+                    <p>Beyond exhaustion: three invisible losses — reciprocity, forward narrative, and ordinary selfhood. The floor is the tether that keeps you connected to shore.</p>
+                </a>
+                <a href="the-long-middle/why-making-friends-after-50-is-genuinely-hard-and-what-actually-helps.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Making Friends After 50 Is Genuinely Hard — And What Actually Helps</h3>
+                    <p>The difficulty is structural, not personal. The Four Coordinates — proximity, frequency, reciprocity, and depth — that can be created deliberately after the social infrastructure dissolves.</p>
+                </a>
+                <a href="the-long-middle/why-your-relationship-with-your-body-has-to-change-in-your-50s-and-60s-and-how.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Your Relationship With Your Body Has to Change in Your 50s and 60s — And How</h3>
+                    <p>When the body starts coming forward with signals that can no longer be ignored. Changing from managing a system to attending an honest, curious relationship with the ground beneath everything.</p>
+                </a>
+                <a href="the-long-middle/why-you-cant-concentrate-anymore-and-its-not-your-fault.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why You Can't Concentrate Anymore (And It's Not Your Fault)</h3>
+                    <p>Living inside an optimisation experiment pointed directly at your attention. The Inhabited Hour and the Return Practice for rebuilding the depth the information environment is designed to prevent.</p>
+                </a>
+                <a href="the-long-middle/why-achieving-your-goals-doesnt-make-you-happy-and-what-actually-does.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Achieving Your Goals Doesn't Make You Happy (And What Actually Does)</h3>
+                    <p>The wanting/liking distinction and the hedonic treadmill. The Plimsoll Line — knowing where your waterline is for commitment, ambition, and obligation.</p>
+                </a>
+                <a href="the-long-middle/the-hidden-cost-of-always-being-quotfinequot-and-how-genuine-connection-actually.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>The Hidden Cost of Always Being "Fine" — And How Genuine Connection Actually Works</h3>
+                    <p>The loneliness of the always-fine person. How the backstage has been colonised and the single most useful move toward genuine connection.</p>
+                </a>
+                <a href="the-long-middle/why-smart-people-believe-false-things-and-what-you-can-do-about-it.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why Smart People Believe False Things — And What You Can Do About It</h3>
+                    <p>Three mechanisms of belief distortion — illusory truth, motivated reasoning, and novelty bias — and the calibration prompt for thinking more clearly in a loud environment.</p>
+                </a>
+                <a href="the-long-middle/why-you-cant-think-clearly-when-youre-stressed-and-the-five-minute-fix-that-actu.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>Why You Can't Think Clearly When You're Stressed (And the Five-Minute Fix That Actually Works)</h3>
+                    <p>The physiological mechanism behind stress-impaired thinking. The cyclic sigh and the three-layer stability system: physiological, self-knowledge, and relational.</p>
+                </a>
+                <a href="the-long-middle/how-to-stop-waiting-for-certainty-before-you-start-living.html" class="post-card nonfiction">
+                    <div class="post-card-date">June 15, 2026</div>
+                    <h3>How to Stop Waiting for Certainty Before You Start Living</h3>
+                    <p>Most meaningful uncertainty resolves by moving, not waiting. The Gardener's Stance and the Not Yet Journal for living well inside not-knowing.</p>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 tom/rhodes. All rights reserved.</p>
+        <p><em>The Saint Effect</em> &amp; <em>The Gentle Uprising</em> by Darryl Purdie.</p>
+    </footer>
+
+</body>
+</html>

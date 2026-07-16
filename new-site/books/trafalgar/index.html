@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trafalgar – tom/rhodes</title>
+<meta name="description" content="Trafalgar: A preacher's son, a hidden conspiracy, and the unsparing reality of the Age of Sail.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300..900;1,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-bg: #f8f5f1; --c-bg-alt: #fff; --c-primary: #0f172a; --c-muted: #64748b; --c-border: #e2d5c3; --c-indigo: #4f46e5; --c-indigo-d: #4338ca; --radius: 10px; --shadow-sm: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04); --shadow-md: 0 4px 18px rgba(15,23,42,.09); --shadow-lg: 0 12px 40px rgba(15,23,42,.13); --font-heading: 'Poppins', sans-serif; --font-body: 'Source Serif 4', Georgia, serif; }
+html { scroll-behavior: smooth; font-size: 17px; }
+body { font-family: var(--font-body); background: var(--c-bg); color: var(--c-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeUp .5s ease both; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+.site-header { background: var(--c-primary); color: #fff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(15,23,42,.25); }
+.site-header-inner { max-width: 1200px; margin: 0 auto; padding: .75rem 1.5rem; display: flex; align-items: center; gap: 1.25rem; }
+.site-nav-link { font-family: var(--font-heading); color: #94a3b8; font-size: .85rem; font-weight: 500; text-decoration: none; letter-spacing: .02em; transition: color .2s; }
+.site-nav-link:hover { color: #fff; }
+.site-header-title { font-family: var(--font-heading); font-size: .95rem; font-weight: 600; color: #e2e8f0; letter-spacing: .02em; }
+.site-wrapper { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+.section { margin-bottom: 3rem; }
+.section-title { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; color: var(--c-primary); margin-bottom: 1.25rem; padding-bottom: .5rem; border-bottom: 2px solid var(--c-border); }
+.hero { position: relative; border-radius: var(--radius); overflow: hidden; margin-bottom: 3rem; box-shadow: var(--shadow-md); min-height: 420px; display: flex; align-items: flex-end; background: linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #334155 100%); }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,.95) 0%, rgba(15,23,42,.6) 40%, rgba(15,23,42,.2) 100%); z-index: 1; }
+.hero-body { position: relative; z-index: 2; padding: 3rem 2.5rem; color: #fff; width: 100%; }
+.hero-tag { display: inline-block; font-family: var(--font-heading); font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; background: rgba(79,70,229,.4); border: 1px solid rgba(79,70,229,.5); padding: .35rem 1rem; border-radius: 20px; margin-bottom: 1.25rem; color: #c7d2fe; }
+.hero-title { font-family: var(--font-heading); font-size: 2.75rem; font-weight: 800; letter-spacing: -.04em; line-height: 1.1; color: #fff; margin-bottom: .3em; }
+.hero-subtitle { font-family: var(--font-heading); font-weight: 300; color: #cbd5e1; font-size: 1.15rem; max-width: 55ch; line-height: 1.55; margin-bottom: 2rem; }
+.cta-primary { display: inline-flex; align-items: center; gap: .5rem; background: var(--c-indigo); color: #fff; border: none; border-radius: 8px; padding: .75rem 1.6rem; font-family: var(--font-heading); font-size: .9rem; font-weight: 700; letter-spacing: .04em; text-decoration: none; transition: background .2s, transform .15s, box-shadow .2s; box-shadow: 0 4px 18px rgba(79,70,229,.4); }
+.cta-primary:hover { background: var(--c-indigo-d); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(79,70,229,.55); color: #fff; }
+.cta-secondary { display: inline-flex; align-items: center; gap: .5rem; background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.3); border-radius: 8px; padding: .65rem 1.4rem; font-family: var(--font-heading); font-size: .85rem; font-weight: 600; letter-spacing: .04em; text-decoration: none; transition: background .2s, border-color .2s, transform .15s; margin-left: .75rem; }
+.cta-secondary:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.6); color: #fff; transform: translateY(-1px); }
+.story-body { font-size: 1.05rem; line-height: 1.85; color: #334155; max-width: 72ch; }
+.story-body p { margin-bottom: 1.15em; }
+.crew-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+@media (min-width: 720px) { .crew-grid { grid-template-columns: repeat(2, 1fr); } }
+.crew-card { background: var(--c-bg-alt); border: 1px solid var(--c-border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease; display: flex; gap: 1.25rem; align-items: flex-start; }
+.crew-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.crew-img { width: 90px; height: 110px; object-fit: cover; border-radius: 6px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(15,23,42,.12); }
+.crew-name { font-family: var(--font-heading); font-size: .95rem; font-weight: 700; color: var(--c-primary); margin-bottom: .2em; }
+.crew-role { font-family: var(--font-heading); font-style: italic; font-weight: 400; color: var(--c-indigo); font-size: .78rem; letter-spacing: .02em; margin-bottom: .6em; }
+.crew-desc { font-size: .875rem; color: #475569; line-height: 1.7; }
+.why-list { list-style: none; padding: 0; display: grid; gap: 1rem; }
+.why-item { background: var(--c-bg-alt); border: 1px solid var(--c-border); border-radius: var(--radius); padding: 1.25rem 1.4rem; box-shadow: var(--shadow-sm); display: flex; gap: 1rem; align-items: flex-start; }
+.why-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+.why-title { font-family: var(--font-heading); font-weight: 700; font-size: .92rem; color: var(--c-primary); margin-bottom: .3em; }
+.why-desc { font-size: .875rem; color: #475569; line-height: 1.7; }
+.cta-section { background: linear-gradient(135deg, #0f172a 0%, #1a1040 100%); border-radius: var(--radius); padding: 3rem 2.5rem; text-align: center; box-shadow: var(--shadow-lg); position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(79,70,229,.3), transparent 60%); pointer-events: none; }
+.cta-section-inner { position: relative; z-index: 1; }
+.cta-section-title { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: .5em; letter-spacing: -.02em; }
+.cta-section-sub { font-size: 1rem; color: #cbd5e1; margin-bottom: 2rem; line-height: 1.6; }
+.cta-large { display: inline-flex; align-items: center; gap: .5rem; background: #fff; color: var(--c-indigo); border: none; border-radius: 8px; padding: .85rem 2rem; font-family: var(--font-heading); font-size: 1rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,.3); transition: transform .2s, box-shadow .2s, background .2s; }
+.cta-large:hover { background: #f1f5f9; transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.4); }
+.footer { text-align: center; color: var(--c-muted); font-family: var(--font-heading); font-size: .78rem; padding: 2.5rem 1rem; border-top: 1px solid var(--c-border); margin-top: 3rem; }
+@media (max-width: 640px) { .site-wrapper { padding: 1.25rem 1rem 4rem; } .hero { min-height: 320px; } .hero-title { font-size: 2rem; } .hero-body { padding: 2rem 1.5rem; } .hero-subtitle { font-size: 1rem; } .cta-secondary { margin-left: 0; margin-top: .75rem; } .cta-section { padding: 2rem 1.5rem; } .cta-section-title { font-size: 1.3rem; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-nav-link" href="../../index.html">&#8592; Home</a>
+  </div>
+</header>
+
+<div class="site-wrapper">
+
+  <div class="hero">
+    <img class="hero-img" src="../../images/trafalgar/hero_1.jpg" alt="Stormy sea and HMS Jeopardy">
+    <div class="hero-overlay"></div>
+    <div class="hero-body">
+      <span class="hero-tag">Historical Fiction</span>
+      <h1 class="hero-title">TRAFALGAR</h1>
+      <p class="hero-subtitle">ON THE EVE OF THE BATTLE THAT CHANGED THE WORLD, THE GREATEST DANGER LIES WITHIN.</p>
+      <a class="cta-primary" href="#buy">&#8599; Buy Now on Amazon</a>
+      <a class="cta-secondary" href="#story">Read the Story</a>
+    </div>
+  </div>
+
+  <div class="section" id="story">
+    <h2 class="section-title">The Story</h2>
+    <div class="story-body">
+      <p>In 1805, the fate of Europe hangs in the balance as Horatio Nelson&rsquo;s fleet prepares to face the combined might of France and Spain.</p>
+      <p>For <strong>Thomas Rivington</strong>, a country vicar&rsquo;s son, joining HMS <em>Jeopardy</em> is a test of faith. He leaves his peaceful parish determined to be a light in the dark. Instead, he is plunged into a brutal, soot-stained wooden world of unsparing discipline, salt-chafed skin, and the claustrophobic reality of the lower decks.</p>
+      <p>But the elements and the enemy are not the only dangers aboard the seventy-four-gun ship of the line. Deep in the hold, Thomas and a small band of unlikely allies uncover a chilling conspiracy. The ship&rsquo;s brilliant, brooding surgeon is selling secrets to the French&mdash;and planning a sabotage that could sink the vessel from within during the height of the coming battle.</p>
+      <p>To save their shipmates, these young officers-in-training must navigate a web of secrets and dangerous moral gray areas. They are forced to sail into the historic fury of Trafalgar alongside a traitor they cannot arrest, waiting for the precise moment of action to stop him.</p>
+    </div>
+  </div>
+
+  <div class="section" id="crew">
+    <h2 class="section-title">Meet the Crew of HMS <em>Jeopardy</em></h2>
+    <div class="crew-grid">
+      <div class="crew-card">
+        <img class="crew-img" src="../../images/trafalgar/tom.JPG" alt="Thomas Rivington">
+        <div class="crew-text">
+          <div class="crew-name">Thomas Rivington</div>
+          <div class="crew-role">The Idealist</div>
+          <div class="crew-desc">The eighteen-year-old son of an English vicar. Idealistic, compassionate, and deeply earnest, Thomas joins the Royal Navy believing his faith will guide him. Faced with the harsh brutality of shipboard life, his neat moral categories begin to shatter, forcing him to learn what true mercy and survival look like in the dark.</div>
+        </div>
+      </div>
+      <div class="crew-card">
+        <img class="crew-img" src="../../images/trafalgar/ben.jpg" alt="Beth Wainwright">
+        <div class="crew-text">
+          <div class="crew-name">Ben Wainwright</div>
+          <div class="crew-role">The Tactician</div>
+          <div class="crew-desc">A fiercely intelligent fifteen-year-old with a sharp, analytical mind and an ability to slip through the shadows unnoticed. Harboring a secret purpose for joining the crew, Ben brings the tactical quiet observation the trio needs.</div>
+        </div>
+      </div>
+      <div class="crew-card">
+        <img class="crew-img" src="../../images/trafalgar/robbie.jpg" alt="Robbie Carey">
+        <div class="crew-text">
+          <div class="crew-name">Robbie Carey</div>
+          <div class="crew-role">The Fixer</div>
+          <div class="crew-desc">A seventeen-year-old midshipman and the son of a Bristol merchant captain. Robbie is the ultimate pragmatist. While Thomas looks at the crew&rsquo;s souls, Robbie looks at what they have and what they need. He understands the ship&rsquo;s underground economy, using trades, favors, and leverage to help the trio survive.</div>
+        </div>
+      </div>
+      <div class="crew-card">
+        <img class="crew-img" src="../../images/trafalgar/sullivan.jpg" alt="Lieutenant Sullivan">
+        <div class="crew-text">
+          <div class="crew-name">Lieutenant Sullivan</div>
+          <div class="crew-role">The Traitor</div>
+          <div class="crew-desc">The ship&rsquo;s brilliant, cultured surgeon. Sullivan is a methodical healer, but his quiet compassion is a shield. Broken by the tragic, preventable loss of his younger brother to naval negligence years ago, Sullivan&rsquo;s grief has hardened into a cold philosophy of self-preservation&mdash;and a deadly plot to see the Royal Navy burn.</div>
+        </div>
+      </div>
+      <div class="crew-card">
+        <img class="crew-img" src="../../images/trafalgar/blackjack.jpg" alt="Black Jack">
+        <div class="crew-text">
+          <div class="crew-name">Black Jack</div>
+          <div class="crew-role">The Veteran</div>
+          <div class="crew-desc">A massive, scarred sailor with forty years of salt wind in his bones. Profane, cynical, and quick to mock weakness, he is the absolute embodiment of the harsh rules of the sea. Yet, beneath his rough exterior lies an unexpected depth of compassion and a protective instinct that makes him a terrifying obstacle to those who threaten the ship&rsquo;s youngest.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="why">
+    <h2 class="section-title">Why Readers Are Diving Into <em>Trafalgar</em></h2>
+    <ul class="why-list">
+      <li class="why-item">
+        <span class="why-icon">&#9875;</span>
+        <div>
+          <div class="why-title">Vivid Historical Accuracy</div>
+          <div class="why-desc">Experience the grinding reality of the Age of Sail&mdash;from the vertigo of the topgallant mast to the suffocating darkness of the surgeon&rsquo;s cockpit.</div>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-icon">&#128064;</span>
+        <div>
+          <div class="why-title">A Tense Espionage Thriller</div>
+          <div class="why-desc">A classic naval adventure crossed with a high-stakes, claustrophobic hunt for a spy hidden in plain sight.</div>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-icon">&#127793;</span>
+        <div>
+          <div class="why-title">A Deeply Human Coming-of-Age Story</div>
+          <div class="why-desc">At its heart, this is a story about finding &ldquo;unexpected mercies&rdquo; and holding onto humanity in a system designed to strip it away.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section cta-section" id="buy">
+    <div class="cta-section-inner">
+      <img src="../../images/trafalgar/jeopardy_cover_publish.jpeg" alt="Trafalgar cover" style="max-width: 220px; border-radius: 6px; box-shadow: 0 8px 32px rgba(0,0,0,.4); margin-bottom: 1.5rem;">
+      <h3 class="cta-section-title">Claim Your Copy Today</h3>
+      <p class="cta-section-sub">Step aboard HMS <em>Jeopardy</em> and experience the tension, the camaraderie, and the historic thunder of Trafalgar.</p>
+      <a class="cta-large" href="https://www.amazon.com/dp/B0H6G1CKDX" target="_blank" rel="noopener">&#128722; Buy on Amazon (Kindle eBook)</a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  &copy; 2026 tom/rhodes &nbsp;&middot;&nbsp; Trafalgar
+</footer>
+
+</body>
+</html>

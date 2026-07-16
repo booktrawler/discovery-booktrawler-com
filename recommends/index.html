@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Lists – tom/rhodes Recommends</title>
+<meta name="description" content="96 curated book recommendation lists. Discover your next great read with thematic connections hand-picked for you.">
+<link rel="canonical" href="https://tomrhodes.me/recommends/">
+<meta name="author" content="tom/rhodes Recommends">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Book Lists – tom/rhodes Recommends">
+<meta property="og:description" content="96 curated book recommendation lists. Discover your next great read with thematic connections hand-picked for you.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tomrhodes.me/recommends/">
+<meta property="og:site_name" content="tom/rhodes Recommends">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Book Lists – tom/rhodes Recommends">
+<meta name="twitter:description" content="96 curated book recommendation lists. Discover your next great read with thematic connections hand-picked for you.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300..900;1,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --c-bg: #f8f5f1;
+  --c-indigo: #4f46e5; --c-indigo-l: #eef2ff;
+  --c-amber: #d97706;  --c-amber-l:  #fffbeb;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body:    'Source Serif 4', Georgia, serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--c-bg); color: #0f172a;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  animation: fadeUp 0.5s ease both;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+.sg-header {
+  background: #0f172a; color: #fff;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 20px rgba(15,23,42,.25);
+}
+.sg-header-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: .88rem; font-weight: 600;
+  color: #94a3b8;
+}
+.sg-header-inner a { color: #94a3b8; text-decoration: none; }
+.sg-header-inner a:hover { color: #fff; }
+
+.sg-wrapper { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+/* hero */
+.sg-index-hero {
+  position: relative; border-radius: 10px;
+  overflow: hidden; margin-bottom: 2.5rem;
+  box-shadow: 0 4px 18px rgba(15,23,42,.09);
+}
+.sg-index-hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(150deg, #0f2040 0%, #1a0a3e 70%, #2d1b69 100%);
+}
+.sg-index-hero-bg-accent {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 80% 50%,
+    rgba(79,70,229,.35), transparent 70%);
+}
+.sg-index-hero-inner {
+  position: relative; z-index: 1;
+  padding: 4rem 2rem; text-align: center; color: #fff;
+}
+.sg-index-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  padding: .3rem .9rem; border-radius: 20px;
+  margin-bottom: 1rem; color: #a5b4fc;
+}
+.sg-index-title {
+  font-family: var(--font-heading);
+  font-size: 2.85rem; font-weight: 800;
+  letter-spacing: -.04em; color: #fff; line-height: 1.08; margin-bottom: .5em;
+}
+.sg-index-sub {
+  font-family: var(--font-heading); font-weight: 300;
+  color: #94a3b8; font-size: 1.1rem;
+}
+.sg-index-count {
+  display: inline-flex; align-items: center; gap: .5rem;
+  margin-top: 1.4rem;
+  font-family: var(--font-heading); font-weight: 600;
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+  background: rgba(79,70,229,.35);
+  border: 1px solid rgba(79,70,229,.45);
+  color: #a5b4fc;
+  padding: .45rem 1.2rem; border-radius: 20px;
+}
+
+/* grid */
+.sg-list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .65rem;
+}
+@media (min-width: 640px) { .sg-list-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .sg-list-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* card */
+.sg-list-card {
+  background: #fff; border: 1px solid #e2d5c3;
+  border-radius: 10px; padding: 1.15rem 1.3rem;
+  text-decoration: none; color: inherit;
+  box-shadow: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+  transition: transform .18s ease, box-shadow .2s, border-color .2s, background .18s;
+  display: block; position: relative; overflow: hidden;
+  animation: fadeUp 0.4s ease both;
+}
+.sg-list-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(15,23,42,.13);
+  border-color: #c9b89a;
+  background: #fffdfb;
+  color: inherit;
+}
+.sg-list-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .22s ease;
+}
+.sg-list-card:hover::after { transform: scaleX(1); }
+.sg-list-card-title {
+  font-family: var(--font-heading);
+  font-size: .94rem; font-weight: 700;
+  color: #0f172a; line-height: 1.3;
+  margin-bottom: .3em; transition: color .18s;
+}
+.sg-list-card:hover .sg-list-card-title { color: #4f46e5; }
+.sg-list-card-meta {
+  font-family: var(--font-heading);
+  font-style: italic; color: #64748b;
+  font-size: .78rem; margin-bottom: .45em;
+}
+.sg-list-card-count {
+  font-family: var(--font-heading);
+  font-size: .72rem; color: var(--c-amber); font-weight: 600;
+  padding: .15rem .6rem; border-radius: 12px;
+  background: var(--c-amber-l); display: inline-block;
+}
+
+@media (max-width: 580px) {
+  .sg-wrapper     { padding: 1.25rem 1rem 4rem; }
+  .sg-index-title { font-size: 2rem; }
+}
+
+/* footer */
+.sg-footer {
+  text-align: center; color: #64748b;
+  font-family: var(--font-heading);
+  font-size: .78rem; padding: 2.5rem 1rem;
+  border-top: 1px solid #e2d5c3;
+  margin-top: 3rem;
+}
+</style>
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Book Lists – tom/rhodes Recommends",
+  "description": "96 curated book recommendation lists. Discover your next great read with thematic connections hand-picked for you.",
+  "url": "https://tomrhodes.me/recommends/",
+  "isPartOf": { "@type": "WebSite", "name": "tom/rhodes", "url": "https://tomrhodes.me/" }
+}
+</script>
+</head>
+<body>
+<div class="sg-wrapper">
+
+  <div class="sg-index-hero">
+    <div class="sg-index-hero-bg"></div>
+    <div class="sg-index-hero-bg-accent"></div>
+    <div class="sg-index-hero-inner">
+      <span class="sg-index-tag">Curated Reading</span>
+      <h1 class="sg-index-title">tom/rhodes Recommends</h1>
+      <p class="sg-index-sub"> 96 curated book recommendation lists — click through to explore recommendations</p>
+      <span class="sg-index-count">96 book lists</span>
+    </div>
+  </div>
+
+  <div class="sg-list-grid">
+<a class="sg-list-card" href="books/1984_george_orwell.html" style="animation-delay:0.00s"><div class="sg-list-card-title">1984</div><div class="sg-list-card-meta">by George Orwell</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/a_peoples_history_of_the_united_states_howard_zinn.html" style="animation-delay:0.04s"><div class="sg-list-card-title">A People&#x27;s History of the United States</div><div class="sg-list-card-meta">by Howard Zinn</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/abundance_derek_thompson.html" style="animation-delay:0.08s"><div class="sg-list-card-title">Abundance</div><div class="sg-list-card-meta">by Derek Thompson</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/alchemised_senlinyu.html" style="animation-delay:0.12s"><div class="sg-list-card-title">Alchemised</div><div class="sg-list-card-meta">by SenLinYu</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/all_about_love_bell_hooks.html" style="animation-delay:0.16s"><div class="sg-list-card-title">All About Love</div><div class="sg-list-card-meta">by bell hooks</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/all_fours_miranda_july.html" style="animation-delay:0.20s"><div class="sg-list-card-title">All Fours</div><div class="sg-list-card-meta">by Miranda July</div><span class="sg-list-card-count">8 books</span></a>
+<a class="sg-list-card" href="books/an_indigenous_peoples_history_of_the_united_states_roxanne_dunbarortiz.html" style="animation-delay:0.24s"><div class="sg-list-card-title">An Indigenous Peoples&#x27; History of the United States</div><div class="sg-list-card-meta">by Roxanne Dunbar-Ortiz</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/atmosphere_taylor_jenkins_reid.html" style="animation-delay:0.28s"><div class="sg-list-card-title">Atmosphere</div><div class="sg-list-card-meta">by Taylor Jenkins Reid</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/bad_company_megan_greenwell.html" style="animation-delay:0.32s"><div class="sg-list-card-title">Bad Company</div><div class="sg-list-card-meta">by Megan Greenwell</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/bad_law_elie_mystal.html" style="animation-delay:0.36s"><div class="sg-list-card-title">Bad Law</div><div class="sg-list-card-meta">by Elie Mystal</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/being_jewish_after_the_destruction_of_gaza_peter_beinart.html" style="animation-delay:0.40s"><div class="sg-list-card-title">Being Jewish After the Destruction of Gaza</div><div class="sg-list-card-meta">by Peter Beinart</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/braiding_sweetgrass_robin_wall_kimmerer.html" style="animation-delay:0.44s"><div class="sg-list-card-title">Braiding Sweetgrass</div><div class="sg-list-card-meta">by Robin Wall Kimmerer</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/bury_our_bones_in_the_midnight_soil_v_e_schwab.html" style="animation-delay:0.48s"><div class="sg-list-card-title">Bury Our Bones in the Midnight Soil</div><div class="sg-list-card-meta">by V. E. Schwab</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/by_heart_hailee_catalano.html" style="animation-delay:0.52s"><div class="sg-list-card-title">By Heart</div><div class="sg-list-card-meta">by Hailee Catalano</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/careless_people_sarah_churchwell.html" style="animation-delay:0.56s"><div class="sg-list-card-title">Careless People</div><div class="sg-list-card-meta">by Sarah Churchwell</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/death_of_the_author_deluxe_limited_edition_nnedi_okorafor.html" style="animation-delay:0.60s"><div class="sg-list-card-title">Death of the Author (Deluxe Limited Edition)</div><div class="sg-list-card-meta">by Nnedi Okorafor</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/deep_end_ali_hazelwood.html" style="animation-delay:0.64s"><div class="sg-list-card-title">Deep End</div><div class="sg-list-card-meta">by Ali Hazelwood</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/demon_copperhead_barbara_kingsolver.html" style="animation-delay:0.68s"><div class="sg-list-card-title">Demon Copperhead</div><div class="sg-list-card-meta">by Barbara Kingsolver</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/dream_count_chimamanda_ngozi_adichie.html" style="animation-delay:0.72s"><div class="sg-list-card-title">Dream Count</div><div class="sg-list-card-meta">by Chimamanda Ngozi Adichie</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/escape_stephen_fishbach.html" style="animation-delay:0.76s"><div class="sg-list-card-title">Escape!</div><div class="sg-list-card-meta">by Stephen Fishbach</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/everything_is_tuberculosis_john_green.html" style="animation-delay:0.80s"><div class="sg-list-card-title">Everything Is Tuberculosis</div><div class="sg-list-card-meta">by John Green</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/fahrenheit_451_ray_bradbury.html" style="animation-delay:0.84s"><div class="sg-list-card-title">Fahrenheit 451</div><div class="sg-list-card-meta">by Ray Bradbury</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/fourth_wing_rebecca_yarros.html" style="animation-delay:0.88s"><div class="sg-list-card-title">Fourth Wing</div><div class="sg-list-card-meta">by Rebecca Yarros</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/girls_on_the_rise_amanda_gorman.html" style="animation-delay:0.92s"><div class="sg-list-card-title">Girls on the Rise</div><div class="sg-list-card-meta">by Amanda Gorman</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/giving_up_is_unforgivable_joyce_white_vance.html" style="animation-delay:0.96s"><div class="sg-list-card-title">Giving Up Is Unforgivable</div><div class="sg-list-card-meta">by Joyce White Vance</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/good_things_samin_nosrat.html" style="animation-delay:1.00s"><div class="sg-list-card-title">Good Things</div><div class="sg-list-card-meta">by Samin Nosrat</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/great_big_beautiful_life_reeses_book_club.html" style="animation-delay:1.04s"><div class="sg-list-card-title">Great Big Beautiful Life</div><div class="sg-list-card-meta">by Reese’s Book Club</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/harriet_tubman_live_in_concert_bob_the_drag_queen.html" style="animation-delay:1.08s"><div class="sg-list-card-title">Harriet Tubman: Live in Concert</div><div class="sg-list-card-meta">by Bob the Drag Queen</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/high_functioning_judith_joseph.html" style="animation-delay:1.12s"><div class="sg-list-card-title">High Functioning</div><div class="sg-list-card-meta">by Judith Joseph</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/how_fascism_works_jason_stanley.html" style="animation-delay:1.16s"><div class="sg-list-card-title">How Fascism Works</div><div class="sg-list-card-meta">by Jason Stanley</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/how_we_learn_to_be_brave_mariann_edgar_budde.html" style="animation-delay:1.20s"><div class="sg-list-card-title">How We Learn to Be Brave</div><div class="sg-list-card-meta">by Mariann Edgar Budde</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/i_who_have_never_known_men_jacqueline_harpman.html" style="animation-delay:1.24s"><div class="sg-list-card-title">I Who Have Never Known Men</div><div class="sg-list-card-meta">by Jacqueline Harpman</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/james_percival_everett.html" style="animation-delay:1.28s"><div class="sg-list-card-title">James</div><div class="sg-list-card-meta">by Percival Everett</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/lawless_leah_litman.html" style="animation-delay:1.32s"><div class="sg-list-card-title">Lawless</div><div class="sg-list-card-meta">by Leah Litman</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/let_this_radicalize_you_mariame_kaba.html" style="animation-delay:1.36s"><div class="sg-list-card-title">Let This Radicalize You</div><div class="sg-list-card-meta">by Mariame Kaba</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/love_in_a_fckedup_world_dean_spade.html" style="animation-delay:1.40s"><div class="sg-list-card-title">Love in a F*cked-Up World</div><div class="sg-list-card-meta">by Dean Spade</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/marsha_tourmaline.html" style="animation-delay:1.44s"><div class="sg-list-card-title">Marsha</div><div class="sg-list-card-meta">by Tourmaline</div><span class="sg-list-card-count">11 books</span></a>
+<a class="sg-list-card" href="books/martyr_kaveh_akbar.html" style="animation-delay:1.48s"><div class="sg-list-card-title">Martyr!</div><div class="sg-list-card-meta">by Kaveh Akbar</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/mechanic_shop_femmes_guide_to_car_ownership_chaya_m_milchtein.html" style="animation-delay:1.52s"><div class="sg-list-card-title">Mechanic Shop Femme&#x27;s Guide to Car Ownership</div><div class="sg-list-card-meta">by Chaya M. Milchtein</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/meditations_for_mortals_oliver_burkeman.html" style="animation-delay:1.56s"><div class="sg-list-card-title">Meditations for Mortals</div><div class="sg-list-card-meta">by Oliver Burkeman</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/my_friends_fredrik_backman.html" style="animation-delay:1.60s"><div class="sg-list-card-title">My Friends</div><div class="sg-list-card-meta">by Fredrik Backman</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/not_my_type_e_jean_carroll.html" style="animation-delay:1.64s"><div class="sg-list-card-title">Not My Type</div><div class="sg-list-card-meta">by E. Jean Carroll</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/notes_to_john_joan_didion.html" style="animation-delay:1.68s"><div class="sg-list-card-title">Notes to John</div><div class="sg-list-card-meta">by Joan Didion</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/oathbound_tracy_deonn.html" style="animation-delay:1.72s"><div class="sg-list-card-title">Oathbound</div><div class="sg-list-card-meta">by Tracy Deonn</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/on_freedom_timothy_snyder.html" style="animation-delay:1.76s"><div class="sg-list-card-title">On Freedom</div><div class="sg-list-card-meta">by Timothy Snyder</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/on_tyranny_graphic_edition_timothy_snyder.html" style="animation-delay:1.80s"><div class="sg-list-card-title">On Tyranny (Graphic Edition)</div><div class="sg-list-card-meta">by Timothy Snyder</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/on_tyranny_timothy_snyder.html" style="animation-delay:1.84s"><div class="sg-list-card-title">On Tyranny</div><div class="sg-list-card-meta">by Timothy Snyder</div><span class="sg-list-card-count">20 books</span></a>
+<a class="sg-list-card" href="books/one_day_everyone_will_have_always_been_against_this.html" style="animation-delay:1.88s"><div class="sg-list-card-title">One Day</div><div class="sg-list-card-meta">by Everyone Will Have Always Been Against This</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/onyx_storm_standard_edition_rebecca_yarros.html" style="animation-delay:1.92s"><div class="sg-list-card-title">Onyx Storm (Standard Edition)</div><div class="sg-list-card-meta">by Rebecca Yarros</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/orbital_samantha_harvey.html" style="animation-delay:1.96s"><div class="sg-list-card-title">Orbital</div><div class="sg-list-card-meta">by Samantha Harvey</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/original_sins_eve_l_ewing.html" style="animation-delay:2.00s"><div class="sg-list-card-title">Original Sins</div><div class="sg-list-card-meta">by Eve L. Ewing</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/parable_of_the_sower_octavia_e_butler.html" style="animation-delay:2.04s"><div class="sg-list-card-title">Parable of the Sower</div><div class="sg-list-card-meta">by Octavia E. Butler</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/parable_of_the_talents_octavia_e_butler.html" style="animation-delay:2.08s"><div class="sg-list-card-title">Parable of the Talents</div><div class="sg-list-card-meta">by Octavia E. Butler</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/pathological_sarah_fay.html" style="animation-delay:2.12s"><div class="sg-list-card-title">Pathological</div><div class="sg-list-card-meta">by Sarah Fay</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/perfect_victims_mohammed_elkurd.html" style="animation-delay:2.16s"><div class="sg-list-card-title">Perfect Victims</div><div class="sg-list-card-meta">by Mohammed El-Kurd</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/poems_of_parenting_loryn_brantz.html" style="animation-delay:2.20s"><div class="sg-list-card-title">Poems of Parenting</div><div class="sg-list-card-meta">by Loryn Brantz</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/rich_girl_nation_katie_gatti_tassin.html" style="animation-delay:2.24s"><div class="sg-list-card-title">Rich Girl Nation</div><div class="sg-list-card-meta">by Katie Gatti Tassin</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/say_youll_remember_me_abby_jimenez.html" style="animation-delay:2.28s"><div class="sg-list-card-title">Say You&#x27;ll Remember Me</div><div class="sg-list-card-meta">by Abby Jimenez</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/scythe__sparrow_barbara_edition_barbara_kingsolver_ed.html" style="animation-delay:2.32s"><div class="sg-list-card-title">Scythe &amp; Sparrow (Barbara Edition)</div><div class="sg-list-card-meta">by Barbara Kingsolver (ed.)</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/secrets_of_adulthood_gretchen_rubin.html" style="animation-delay:2.36s"><div class="sg-list-card-title">Secrets of Adulthood</div><div class="sg-list-card-meta">by Gretchen Rubin</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/so_easy_so_good_kylie_sakaida.html" style="animation-delay:2.40s"><div class="sg-list-card-title">So Easy So Good</div><div class="sg-list-card-meta">by Kylie Sakaida</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/sophs_plant_kitchen_sophie_waplington.html" style="animation-delay:2.44s"><div class="sg-list-card-title">Soph&#x27;s Plant Kitchen</div><div class="sg-list-card-meta">by Sophie Waplington</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/spent_alison_bechdel.html" style="animation-delay:2.48s"><div class="sg-list-card-title">Spent</div><div class="sg-list-card-meta">by Alison Bechdel</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/sunrise_on_the_reaping_the_hunger_games_suzanne_collins.html" style="animation-delay:2.52s"><div class="sg-list-card-title">Sunrise on the Reaping (The Hunger Games)</div><div class="sg-list-card-meta">by Suzanne Collins</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/super_agers_eric_topol.html" style="animation-delay:2.56s"><div class="sg-list-card-title">Super Agers</div><div class="sg-list-card-meta">by Eric Topol</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_art_of_gathering_priya_parker.html" style="animation-delay:2.60s"><div class="sg-list-card-title">The Art of Gathering</div><div class="sg-list-card-meta">by Priya Parker</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_artists_way_julia_cameron.html" style="animation-delay:2.64s"><div class="sg-list-card-title">The Artist&#x27;s Way</div><div class="sg-list-card-meta">by Julia Cameron</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_backyard_bird_chronicles_amy_tan.html" style="animation-delay:2.68s"><div class="sg-list-card-title">The Backyard Bird Chronicles</div><div class="sg-list-card-meta">by Amy Tan</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_bluest_eye_toni_morrison.html" style="animation-delay:2.72s"><div class="sg-list-card-title">The Bluest Eye</div><div class="sg-list-card-meta">by Toni Morrison</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_book_of_alchemy_suleika_jaouad.html" style="animation-delay:2.76s"><div class="sg-list-card-title">The Book of Alchemy</div><div class="sg-list-card-meta">by Suleika Jaouad</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_emperor_of_gladness_ocean_vuong.html" style="animation-delay:2.80s"><div class="sg-list-card-title">The Emperor of Gladness</div><div class="sg-list-card-meta">by Ocean Vuong</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_frozen_river_ariel_lawhon.html" style="animation-delay:2.84s"><div class="sg-list-card-title">The Frozen River</div><div class="sg-list-card-meta">by Ariel Lawhon</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_god_of_the_woods_liz_moore.html" style="animation-delay:2.88s"><div class="sg-list-card-title">The God of the Woods</div><div class="sg-list-card-meta">by Liz Moore</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_handmaids_tale_margaret_atwood.html" style="animation-delay:2.92s"><div class="sg-list-card-title">The Handmaid&#x27;s Tale</div><div class="sg-list-card-meta">by Margaret Atwood</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_high_dive_chelsea_fagan.html" style="animation-delay:2.96s"><div class="sg-list-card-title">The High Dive</div><div class="sg-list-card-meta">by Chelsea Fagan</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_last_american_road_trip_sarah_kendzior.html" style="animation-delay:3.00s"><div class="sg-list-card-title">The Last American Road Trip</div><div class="sg-list-card-meta">by Sarah Kendzior</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_let_them_theory_mel_robbins.html" style="animation-delay:3.04s"><div class="sg-list-card-title">The Let Them Theory</div><div class="sg-list-card-meta">by Mel Robbins</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_message_tanehisi_coates.html" style="animation-delay:3.08s"><div class="sg-list-card-title">The Message</div><div class="sg-list-card-meta">by Ta-Nehisi Coates</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_missing_half_ashley_flowers.html" style="animation-delay:3.12s"><div class="sg-list-card-title">The Missing Half</div><div class="sg-list-card-meta">by Ashley Flowers</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_pocket_constitution_of_the_united_states_of_america_various.html" style="animation-delay:3.16s"><div class="sg-list-card-title">The Pocket Constitution of the United States of America</div><div class="sg-list-card-meta">by Various</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_portable_feminist_reader_roxane_gay.html" style="animation-delay:3.20s"><div class="sg-list-card-title">The Portable Feminist Reader</div><div class="sg-list-card-meta">by Roxane Gay</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_project_david_a_graham.html" style="animation-delay:3.24s"><div class="sg-list-card-title">The Project</div><div class="sg-list-card-meta">by David A. Graham</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_river_has_roots_amal_elmohtar.html" style="animation-delay:3.28s"><div class="sg-list-card-title">The River Has Roots</div><div class="sg-list-card-meta">by Amal El-Mohtar</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_serviceberry_robin_wall_kimmerer.html" style="animation-delay:3.32s"><div class="sg-list-card-title">The Serviceberry</div><div class="sg-list-card-meta">by Robin Wall Kimmerer</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_sirens_call_chris_hayes.html" style="animation-delay:3.36s"><div class="sg-list-card-title">The Sirens&#x27; Call</div><div class="sg-list-card-meta">by Chris Hayes</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_tears_of_things_richard_rohr.html" style="animation-delay:3.40s"><div class="sg-list-card-title">The Tears of Things</div><div class="sg-list-card-meta">by Richard Rohr</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_tell_amy_griffin.html" style="animation-delay:3.44s"><div class="sg-list-card-title">The Tell</div><div class="sg-list-card-meta">by Amy Griffin</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/the_wedding_people_alison_espach.html" style="animation-delay:3.48s"><div class="sg-list-card-title">The Wedding People</div><div class="sg-list-card-meta">by Alison Espach</div><span class="sg-list-card-count">11 books</span></a>
+<a class="sg-list-card" href="books/this_thing_of_ours_frederick_joseph.html" style="animation-delay:3.52s"><div class="sg-list-card-title">This Thing of Ours</div><div class="sg-list-card-meta">by Frederick Joseph</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/we_can_do_hard_things_glennon_doyle.html" style="animation-delay:3.56s"><div class="sg-list-card-title">We Can Do Hard Things</div><div class="sg-list-card-meta">by Glennon Doyle</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/what_if_we_get_it_right_ayana_elizabeth_johnson.html" style="animation-delay:3.60s"><div class="sg-list-card-title">What If We Get It Right?</div><div class="sg-list-card-meta">by Ayana Elizabeth Johnson</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/when_no_thing_works_norma_wong.html" style="animation-delay:3.64s"><div class="sg-list-card-title">When No Thing Works</div><div class="sg-list-card-meta">by Norma Wong</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/when_were_in_charge_amanda_litman.html" style="animation-delay:3.68s"><div class="sg-list-card-title">When We&#x27;re in Charge</div><div class="sg-list-card-meta">by Amanda Litman</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/who_is_government_michael_lewis.html" style="animation-delay:3.72s"><div class="sg-list-card-title">Who Is Government?</div><div class="sg-list-card-meta">by Michael Lewis</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/wild_dark_shore_charlotte_mcconaghy.html" style="animation-delay:3.76s"><div class="sg-list-card-title">Wild Dark Shore</div><div class="sg-list-card-meta">by Charlotte McConaghy</div><span class="sg-list-card-count">12 books</span></a>
+<a class="sg-list-card" href="books/woodworking_emily_st_james.html" style="animation-delay:3.80s"><div class="sg-list-card-title">Woodworking</div><div class="sg-list-card-meta">by Emily St. James</div><span class="sg-list-card-count">12 books</span></a>
+  </div>
+
+</div>
+
+<footer class="sg-footer">
+  &copy; 2026 tom/rhodes Recommends &nbsp;&#183;&nbsp; Bookshop.org affiliate
+</footer>
+</body>
+</html>

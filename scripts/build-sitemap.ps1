@@ -3,12 +3,17 @@
 # Index.html files are listed as their directory URL (trailing slash).
 # The repo-root gag index.html is intentionally excluded (it redirects to /discovery/).
 
-$base = 'C:\Users\richa\OneDrive\Documents\dev\discovery-tom/rhodes-com'
-$discovery = Join-Path $base 'discovery'
+$base = 'C:\Users\richa\OneDrive\Documents\dev\discovery-booktrawler-com'
 $sitemap = Join-Path $base 'sitemap.xml'
 $siteUrl = 'https://tomrhodes.me/'
 
-$files = Get-ChildItem -LiteralPath $discovery -Recurse -Filter *.html |
+# Walk the whole repo for HTML pages, excluding non-public paths.
+$excludeDirs = @('new-site', '.git', '.kilo')
+$files = Get-ChildItem -LiteralPath $base -Recurse -Filter *.html |
+    Where-Object {
+        $rel = $_.FullName.Replace("$base\", "").Replace('\', '/')
+        -not ($excludeDirs | Where-Object { $rel -like "$_/*" -or $rel -eq $_ })
+    } |
     Select-Object -ExpandProperty FullName |
     ForEach-Object { $_.Replace("$base\", "").Replace('\', '/') } |
     Sort-Object
@@ -29,8 +34,8 @@ function Add-Url($u) {
 }
 
 foreach ($f in $files) {
-    if ($f -eq 'discovery/index.html') {
-        Add-Url ($siteUrl + 'discovery/')
+    if ($f -eq 'index.html') {
+        Add-Url $siteUrl
         continue
     }
     if ($f.EndsWith('/index.html')) {

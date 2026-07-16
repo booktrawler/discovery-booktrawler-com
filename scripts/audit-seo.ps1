@@ -2,12 +2,12 @@
 # Scans every HTML page (repo root + discovery/) and reports SEO/AEO/GEO gaps.
 # Output: audit-report.csv (per page) and audit-summary.md (aggregate).
 
-$base = 'C:\Users\richa\OneDrive\Documents\dev\discovery-tom/rhodes-com'
+$base = 'C:\Users\richa\OneDrive\Documents\dev\discovery-booktrawler-com'
 $outCsv = Join-Path $base 'audit-report.csv'
 $outMd = Join-Path $base 'audit-summary.md'
 
 $files = Get-ChildItem -LiteralPath $base -Recurse -Filter *.html |
-    Where-Object { $_.FullName -notmatch '\\\.git\\' } |
+    Where-Object { $_.FullName -notmatch '\\\.git\\' -and $_.FullName -notmatch '\\new-site\\' -and $_.FullName -notmatch '\\\.kilo\\' } |
     Select-Object -ExpandProperty FullName
 
 $rows = @()
