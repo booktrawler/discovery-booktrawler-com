@@ -14,7 +14,7 @@
 [CmdletBinding()]
 param([switch]$WhatIf)
 
-$base    = 'C:\Users\richa\OneDrive\Documents\dev\discovery-booktrawler-com'
+$base    = 'C:\Users\richa\OneDrive\Documents\dev\discovery-tom/rhodes-com'
 $siteUrl = 'https://tomrhodes.me/'
 $flag    = '<!-- seo-injected -->'
 
@@ -96,7 +96,7 @@ foreach ($f in $files) {
     # Strip any previously injected block so improvements always apply.
     $html = [regex]::Replace($html, '(?s)<!-- seo-injected -->.*?(?=</head>)', '')
 
-    $title = if ($html -match '<title>(.*?)</title>') { $Matches[1].Trim() } else { 'Booktrawler Discovery' }
+    $title = if ($html -match '<title>(.*?)</title>') { $Matches[1].Trim() } else { 'tom/rhodes Discovery' }
     $desc  = if ($html -match '<meta\s+name="description"\s+content="(.*?)"') { $Matches[1].Trim() } else { '' }
 
     # Root gag page: canonical to real home + redirect only.
@@ -157,9 +157,9 @@ foreach ($f in $files) {
 
     $graph =
         '{ "@context": "https://schema.org", "@graph": [ ' +
-        '{ "@type": "Organization", "@id": "' + $siteUrl + '#organization", "name": "Booktrawler Discovery", "url": "' + $siteUrl + '", ' +
+        '{ "@type": "Organization", "@id": "' + $siteUrl + '#organization", "name": "tom/rhodes Discovery", "url": "' + $siteUrl + '", ' +
             '"description": "Curated, opinionated reading guides across fiction, nonfiction, kids, young adult, and themed reading journeys." }, ' +
-        '{ "@type": "WebSite", "@id": "' + $siteUrl + '#website", "name": "Booktrawler Discovery", "url": "' + $siteUrl + '", "publisher": { "@id": "' + $siteUrl + '#organization" } }, ' +
+        '{ "@type": "WebSite", "@id": "' + $siteUrl + '#website", "name": "tom/rhodes Discovery", "url": "' + $siteUrl + '", "publisher": { "@id": "' + $siteUrl + '#organization" } }, ' +
         '{ "@type": "BreadcrumbList", "@id": "' + $canon + '#breadcrumb", "itemListElement": [ ' + ($crumbs -join ', ') + ' ] }' +
         $bookJson + $faqJson +
         ' ] }'
@@ -168,7 +168,7 @@ foreach ($f in $files) {
         '<link rel="canonical" href="' + $canon + '">' + "`n" +
         '<meta name="robots" content="index,follow">' + "`n" +
         '<meta property="og:type" content="website">' + "`n" +
-        '<meta property="og:site_name" content="Booktrawler Discovery">' + "`n" +
+        '<meta property="og:site_name" content="tom/rhodes Discovery">' + "`n" +
         '<meta property="og:title" content="' + $title + '">' + "`n" +
         '<meta property="og:description" content="' + $desc + '">' + "`n" +
         '<meta property="og:url" content="' + $canon + '">' + "`n" +

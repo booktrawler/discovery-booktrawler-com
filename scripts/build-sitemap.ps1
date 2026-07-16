@@ -3,7 +3,7 @@
 # Index.html files are listed as their directory URL (trailing slash).
 # The repo-root gag index.html is intentionally excluded (it redirects to /discovery/).
 
-$base = 'C:\Users\richa\OneDrive\Documents\dev\discovery-booktrawler-com'
+$base = 'C:\Users\richa\OneDrive\Documents\dev\discovery-tom/rhodes-com'
 $discovery = Join-Path $base 'discovery'
 $sitemap = Join-Path $base 'sitemap.xml'
 $siteUrl = 'https://tomrhodes.me/'

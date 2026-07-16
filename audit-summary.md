@@ -1,5 +1,5 @@
 # SEO / AEO / GEO Audit Summary
-Generated: 2026-07-15 15:54:50Z
+Generated: 2026-07-15 15:56:24Z
 Pages scanned: 395
 
 | Element | Present | Coverage |

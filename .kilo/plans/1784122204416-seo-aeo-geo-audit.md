@@ -1,4 +1,4 @@
-# SEO / AEO / GEO Audit & Remediation Plan — Booktrawler Discovery
+# SEO / AEO / GEO Audit & Remediation Plan — tom/rhodes Discovery
 
 ## Context (verified against the codebase)
 - 394 static HTML pages under `discovery/` plus a root `index.html` (a "Nothing to see here" placeholder) and root `sitemap.xml`.
@@ -11,12 +11,12 @@
   - meta robots: **0**
   - `<img>` tags: **0** (text-only site)
 - No `robots.txt` exists (repo root or `discovery/`).
-- `sitemap.xml` URLs still point to `booktrawler.github.io/discovery-booktrawler-com/...` (wrong domain + stale after custom-domain launch).
+- `sitemap.xml` URLs still point to `tom/rhodes.github.io/discovery-tom/rhodes-com/...` (wrong domain + stale after custom-domain launch).
 - Custom domain `tomrhodes.me` is now live (CNAME + DNS A/CNAME records configured).
 
 ## Decisions (confirmed with user)
 1. **Deliverable:** Audit **plus** automated fixes applied via script.
-2. **Primary/canonical domain:** `https://tomrhodes.me` everywhere. `booktrawler.github.io` is only the underlying host (eventual 301 redirect target source).
+2. **Primary/canonical domain:** `https://tomrhodes.me` everywhere. `tom/rhodes.github.io` is only the underlying host (eventual 301 redirect target source).
 3. **Audit method:** Automated PowerShell script parsing all pages, emitting a report.
 4. **Schema set:** Full — `Organization` + `WebSite`(SearchAction) + `BreadcrumbList` + `ItemList`/`Book` + `FAQPage`.
 
@@ -57,7 +57,7 @@ For every `*.html` (root + `discovery/`):
 - Inject, before `</head>`, a consistent block:
   - `<link rel="canonical" href="{canonical}">`
   - `<meta name="robots" content="index,follow">` (except the gag root `index.html`, handled in Step 5)
-  - **Open Graph:** `og:type=website`, `og:site_name=Booktrawler Discovery`, `og:title` (from `<title>`), `og:description` (from meta description), `og:url={canonical}`, `og:locale=en_US`. (`og:image` omitted — no images exist; note as follow-up to add a brand social card.)
+  - **Open Graph:** `og:type=website`, `og:site_name=tom/rhodes Discovery`, `og:title` (from `<title>`), `og:description` (from meta description), `og:url={canonical}`, `og:locale=en_US`. (`og:image` omitted — no images exist; note as follow-up to add a brand social card.)
   - **Twitter:** `twitter:card=summary_large_image`, `twitter:title`, `twitter:description`, `twitter:url`.
   - **JSON-LD** (one `<script type="application/ld+json">` block, concatenated graph):
     - `Organization` (constants: name, url `https://tomrhodes.me/`, sameAs if available).
